@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-df = pd.read_csv("./data/misc/bts_table_259_2017.csv")
+df = pd.read_csv("./bts_table_259_2017.csv")
 df = df[df['SEATS'] > 0]
 df_airline_route = df.groupby(['CARRIER', 'ORIGIN', 'DEST'])[
     'DEPARTURES_PERFORMED', 'SEATS', 'PASSENGERS'].sum().reset_index()
@@ -45,7 +45,7 @@ def route_analysis(origins, destinations):
 
     origins_string = "_".join(origins)
     destinations_string = "_".join(destinations)
-    df_local.to_csv('./data/misc/load_factor_from_{}_to_{}.csv'.format(origins_string, destinations_string),
+    df_local.to_csv('./load_factor_from_{}_to_{}.csv'.format(origins_string, destinations_string),
                     index=False)
 
 
